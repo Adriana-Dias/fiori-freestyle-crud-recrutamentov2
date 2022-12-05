@@ -1,0 +1,111 @@
+<mvc:View controllerName="v2.recrutamentov2.controller.Worklist" 
+xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" 
+xmlns:semantic="sap.f.semantic">
+    <semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+        <semantic:titleHeading>
+            <Title text="{i18n>worklistTitle}" level="H2" />
+        </semantic:titleHeading>
+
+        <semantic:content>
+            <Table
+                id="table"
+                width="auto"
+                mode="Delete"
+                delete="onRecrutaDelete"
+                items="{
+                    path: '/RecrutaSet',
+                    sorter: {
+                        path: 'ID',
+                        descending: false
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                growingThreshold="20"
+                updateFinished=".onUpdateFinished"
+            >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title id="tableHeader" text="Lista de Candidatos" level="H3" />
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <Button id="_IDGenButton4" text="Criar" type="Emphasized" press="onCriarRecruta" />
+                        <SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow" />
+                            </layoutData>
+                        </SearchField>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+
+                <columns>
+                    <Column id="col1">
+                        <Text text="ID" id="tx1" />
+                    </Column>
+                    <Column id="col2">
+                        <Text text="Nome" id="tx2" />
+                    </Column>
+                    <Column id="col3">
+                        <Text text="T.Exp."  id="tx3" />
+                    </Column>
+                    <Column id="col8">
+                        <Text text="Profissão"  id="tx8" />
+                    </Column>
+                    <Column id="col4">
+                        <Text text="Cod.Vaga" id="tx4" />
+                    </Column>
+                    <Column id="col5" hAlign="End">
+                        <Text text="UF" id="tx5" />
+                    </Column>
+                    <Column id="col6" hAlign="End">
+                        <Text text="Status" id="tx6" />
+                    </Column>
+                    <Column id="col7" hAlign="End">
+                        <Text text="Avançar Status" id="tx7" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press=".onPress" >
+                        <cells>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{ID}" />
+
+                            <ObjectAttribute id="_IDGenObjectAttribute1" text="{Ename}" />
+                            <ObjectAttribute id="_IDGenObjectAttribute2" text="{TempoExp}" />
+                            <ObjectAttribute id="_IDGenObjectAttribute4" text="{Profissao}" />
+                            <ObjectAttribute id="_IDGenObjectAttribute3" text="{CodVaga}" />
+                            <ObjectNumber id="_IDGenObjectNumber1" unit="{Region}" />
+                            <ObjectStatus id="_IDGenObjectStatus1" text="{Descr}" />
+
+
+                            <MenuButton text="Status" buttonMode="Split" defaultAction="onDefaultAction">
+                                <menu>
+                                    <Menu itemSelected="onMenuAction">
+                                        <MenuItem text="Novo" icon="sap-icon://edit" />
+                                        <MenuItem text="Em análise" icon="sap-icon://save" />
+                                        <MenuItem text="Aprovado" icon="sap-icon://accept" />
+                                        <MenuItem text="Rejeitado" icon="sap-icon://decline" />    
+                                        <MenuItem text="Pendências" icon="sap-icon://pending" />
+                                        <MenuItem text="Contratado" icon="sap-icon://employee-approvals" /> 
+                                        <MenuItem text="Entrevista HR" icon="sap-icon://meeting-room" /> 
+                                        <MenuItem text="Entrevista Técnica" icon="sap-icon://meeting-room" /> 
+                                        <MenuItem text="Entrevista Cliente" icon="sap-icon://meeting-room" />    
+                                        <MenuItem text="Processo Concluído" icon="sap-icon://complete" />                                 
+                                    </Menu>
+                                </menu>
+                            </MenuButton>
+
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress" />
+        </semantic:sendEmailAction>
+    </semantic:SemanticPage>
+</mvc:View>

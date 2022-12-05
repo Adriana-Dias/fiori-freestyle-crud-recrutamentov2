@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZRECRUTA50_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Recruta" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nome empr./can." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Street" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Rua" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Região" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DtNasc" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Data Nascimento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tel" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Recvr  Tel Phone No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TempoExp" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Tempo Experiência" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodVaga" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Código Vaga" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Profissao" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Profissaõ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descr" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Descrição atual do status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Obs" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Observação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="historico" Relationship="ZRECRUTA50_SRV.RecrutaToHistorico" FromRole="FromRole_RecrutaToHistorico" ToRole="ToRole_RecrutaToHistorico"/>
+            </EntityType>
+            <EntityType Name="Vagas" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="COD"/>
+                </Key>
+                <Property Name="COD" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Código Vaga" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Descr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Descrição Vaga" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salario" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:label="Montante" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nivel" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Nível" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TempoExp" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Tempo Experiência" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Obs" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Observação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Historico" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="Data"/>
+                    <PropertyRef Name="Hora"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Data" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Data atual" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hora" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Hora" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descr" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Descrição atual do status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Obs" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Observação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="recruta" Relationship="ZRECRUTA50_SRV.HistoricoToRecruta" FromRole="FromRole_HistoricoToRecruta" ToRole="ToRole_HistoricoToRecruta"/>
+            </EntityType>
+            <Association Name="RecrutaToHistorico" sap:content-version="1">
+                <End Type="ZRECRUTA50_SRV.Recruta" Multiplicity="1" Role="FromRole_RecrutaToHistorico"/>
+                <End Type="ZRECRUTA50_SRV.Historico" Multiplicity="*" Role="ToRole_RecrutaToHistorico"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RecrutaToHistorico">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RecrutaToHistorico">
+                        <PropertyRef Name="ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="HistoricoToRecruta" sap:content-version="1">
+                <End Type="ZRECRUTA50_SRV.Historico" Multiplicity="1" Role="FromRole_HistoricoToRecruta"/>
+                <End Type="ZRECRUTA50_SRV.Recruta" Multiplicity="1" Role="ToRole_HistoricoToRecruta"/>
+            </Association>
+            <EntityContainer Name="ZRECRUTA50_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="RecrutaSet" EntityType="ZRECRUTA50_SRV.Recruta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="VagasSet" EntityType="ZRECRUTA50_SRV.Vagas" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HistoricoSet" EntityType="ZRECRUTA50_SRV.Historico" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="RecrutaToHistorico_AssocSet" Association="ZRECRUTA50_SRV.RecrutaToHistorico" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RecrutaSet" Role="FromRole_RecrutaToHistorico"/>
+                    <End EntitySet="HistoricoSet" Role="ToRole_RecrutaToHistorico"/>
+                </AssociationSet>
+                <AssociationSet Name="HistoricoToRecruta_AssocSet" Association="ZRECRUTA50_SRV.HistoricoToRecruta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="HistoricoSet" Role="FromRole_HistoricoToRecruta"/>
+                    <End EntitySet="RecrutaSet" Role="ToRole_HistoricoToRecruta"/>
+                </AssociationSet>
+                <FunctionImport Name="AlteraStatus" ReturnType="ZRECRUTA50_SRV.Recruta" EntitySet="RecrutaSet" m:HttpMethod="GET">
+                    <Parameter Name="ID" Type="Edm.String" Mode="In" MaxLength="4"/>
+                </FunctionImport>
+                <FunctionImport Name="AlteraStatusDescr" ReturnType="ZRECRUTA50_SRV.Recruta" EntitySet="RecrutaSet" m:HttpMethod="GET">
+                    <Parameter Name="ID" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Descr" Type="Edm.String" Mode="In" MaxLength="30"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="https://lnl-s4h.opustech.com.br:5200/sap/opu/odata/sap/ZRECRUTA50_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://lnl-s4h.opustech.com.br:5200/sap/opu/odata/sap/ZRECRUTA50_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

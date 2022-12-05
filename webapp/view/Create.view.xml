@@ -1,0 +1,83 @@
+<mvc:View controllerName="v2.recrutamentov2.controller.Create" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <Page title="Novo Recrutamento" showNavButton="true" navButtonPress=".onNavBack" floatingFooter="true">
+        <f:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout"
+            title="Recrutamento"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="3"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false"
+        >
+            <Label text="Nome" />
+            <Input valueLiveUpdate="true" id="inpNome" value="{Ename}" maxLength="40" />
+            <Label text="Endereço" />
+            <Input value="{Street}" id="inpEndereco" />
+            <Label text="UF" />
+            <Input value="{Region}" id="inpUF" />
+            <Label text="Data Nascimento" />
+
+            <DatePicker value="{
+                path: 'DtNasc',
+                type: 'sap.ui.model.type.Date',
+                formatOptions: {
+                     pattern: 'dd/MM/yyyy' ,
+                     UTC: true }
+                    }" id="inpDt" />
+
+            <Label text="Telefone" />
+            <Input value="{Tel}" id="inpTel" />
+            <Label text="Tempo Experiência" />
+            <Input value="{TempoExp}" id="inpTempo" />
+
+            <Label text="Código da Vaga" labelFor="multiInput" />
+            <Input value="{CodVaga}" id="inpCod" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequested" suggestionItems="{
+              path: '/VagasSet',
+              sorter: { path: 'COD' }
+    }">
+                <core:Item key="{COD}" text="{COD}" />
+            </Input>
+
+            <Label text="Profissão" />
+            <Input value="{Profissao}" id="inpProf" />
+
+            <Label text="Data Criação" />
+            <DatePicker value="{
+                path: 'Data',
+                type: 'sap.ui.model.type.Date',
+                formatOptions: {
+                     pattern: 'dd/MM/yyyy' ,
+                     UTC: true }
+                    }" id="inpData" />
+
+            <Label text="Hora Criação" />
+            <TimePicker id="inpHora" 
+                    valueFormat="HH:mm:ss" 
+                    displayFormat="HH:mm:ss" 
+                    change="handleChange" 
+                    placeholder="Enter time" 
+                    support2400="true"
+                    value="{Hora}" />
+
+            <Label text="Observação" />
+            <Input value="{Obs}" id="inpObs" />
+        </f:SimpleForm>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button type="Accept" text="Gravar" press="onGravar" />
+                <Button type="Reject" text="Cancelar" press="onCancelar" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

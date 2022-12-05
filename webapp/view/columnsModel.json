@@ -1,0 +1,18 @@
+{
+    "cols": [
+        {
+            "label": "Vaga",
+            "template": "COD",
+            "width": "5rem"
+        },
+        {
+            "label": "Descrição",
+            "template": "Descr"
+        },
+        {
+            "label": "Salario",
+            "template": "Salario"
+            
+        }
+    ]
+}
